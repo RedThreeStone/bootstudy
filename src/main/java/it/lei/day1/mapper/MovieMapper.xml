@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="it.lei.day1.mapper.MovieMapper">
+  <resultMap id="BaseResultMap" type="it.lei.day1.entity.Movie">
+    <id column="movie_id" jdbcType="INTEGER" property="movieId" />
+    <result column="movie_name" jdbcType="VARCHAR" property="movieName" />
+    <result column="movie_mainrole" jdbcType="VARCHAR" property="movieMainrole" />
+    <result column="movie_director" jdbcType="VARCHAR" property="movieDirector" />
+    <result column="movie_info" jdbcType="VARCHAR" property="movieInfo" />
+    <result column="movie_notice_url" jdbcType="VARCHAR" property="movieNoticeUrl" />
+    <result column="movie_premiere_day" jdbcType="DATE" property="moviePremiereDay" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    movie_id, movie_name, movie_mainrole, movie_director, movie_info, movie_notice_url, 
+    movie_premiere_day
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from movie
+    where movie_id = #{movieId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from movie
+    where movie_id = #{movieId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="it.lei.day1.entity.Movie">
+    insert into movie (movie_id, movie_name, movie_mainrole, 
+      movie_director, movie_info, movie_notice_url, 
+      movie_premiere_day)
+    values (#{movieId,jdbcType=INTEGER}, #{movieName,jdbcType=VARCHAR}, #{movieMainrole,jdbcType=VARCHAR}, 
+      #{movieDirector,jdbcType=VARCHAR}, #{movieInfo,jdbcType=VARCHAR}, #{movieNoticeUrl,jdbcType=VARCHAR}, 
+      #{moviePremiereDay,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="it.lei.day1.entity.Movie">
+    insert into movie
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="movieId != null">
+        movie_id,
+      </if>
+      <if test="movieName != null">
+        movie_name,
+      </if>
+      <if test="movieMainrole != null">
+        movie_mainrole,
+      </if>
+      <if test="movieDirector != null">
+        movie_director,
+      </if>
+      <if test="movieInfo != null">
+        movie_info,
+      </if>
+      <if test="movieNoticeUrl != null">
+        movie_notice_url,
+      </if>
+      <if test="moviePremiereDay != null">
+        movie_premiere_day,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="movieId != null">
+        #{movieId,jdbcType=INTEGER},
+      </if>
+      <if test="movieName != null">
+        #{movieName,jdbcType=VARCHAR},
+      </if>
+      <if test="movieMainrole != null">
+        #{movieMainrole,jdbcType=VARCHAR},
+      </if>
+      <if test="movieDirector != null">
+        #{movieDirector,jdbcType=VARCHAR},
+      </if>
+      <if test="movieInfo != null">
+        #{movieInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="movieNoticeUrl != null">
+        #{movieNoticeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="moviePremiereDay != null">
+        #{moviePremiereDay,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="it.lei.day1.entity.Movie">
+    update movie
+    <set>
+      <if test="movieName != null">
+        movie_name = #{movieName,jdbcType=VARCHAR},
+      </if>
+      <if test="movieMainrole != null">
+        movie_mainrole = #{movieMainrole,jdbcType=VARCHAR},
+      </if>
+      <if test="movieDirector != null">
+        movie_director = #{movieDirector,jdbcType=VARCHAR},
+      </if>
+      <if test="movieInfo != null">
+        movie_info = #{movieInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="movieNoticeUrl != null">
+        movie_notice_url = #{movieNoticeUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="moviePremiereDay != null">
+        movie_premiere_day = #{moviePremiereDay,jdbcType=DATE},
+      </if>
+    </set>
+    where movie_id = #{movieId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="it.lei.day1.entity.Movie">
+    update movie
+    set movie_name = #{movieName,jdbcType=VARCHAR},
+      movie_mainrole = #{movieMainrole,jdbcType=VARCHAR},
+      movie_director = #{movieDirector,jdbcType=VARCHAR},
+      movie_info = #{movieInfo,jdbcType=VARCHAR},
+      movie_notice_url = #{movieNoticeUrl,jdbcType=VARCHAR},
+      movie_premiere_day = #{moviePremiereDay,jdbcType=DATE}
+    where movie_id = #{movieId,jdbcType=INTEGER}
+  </update>
+</mapper>

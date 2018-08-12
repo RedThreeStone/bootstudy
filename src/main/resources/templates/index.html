@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" th:src="@{js/jquery-2.1.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{js/bootstrap.css}">
+</head>
+<body>
+    <div class="btn btn-info">666</div>
+    <span th:text="${message}"></span>
+    <span th:with="temp = (value==0)">
+        <button class="btn btn-danger" th:text="${temp}"></button>
+    </span>
+    <div th:each="data : ${messageList}">
+        <div th:if="${data}=='小明'">男的</div>
+        <div th:if="${data}=='小梁'">女的</div>
+        <div th:if="${data}=='蔡师傅'">妖</div>
+    </div>
+    <select th:each="data : ${messageList}" >
+        <option th:value="${dataStat.index}" th:text="${data}"></option>
+    </select>
+    <form class="form-horizontal" method="post" action="/login" id="loginForm">
+        <div class="form-group">
+            <span class="label-success" th:text="${#dates.format(now,'yyyy-MM-dd')}"></span>
+            <span class="label-success" th:text="${#lists.size(messageList)}"></span>
+            <span class="label-success" th:text="${#strings.length('88888')}"></span>
+            <span class="label-success" th:text="${#numbers.formatDecimal(money,0,1)}"></span>
+            <input type="text" class="form-control" name="hello">
+        </div>
+        <div class="form-group">
+            <a href="/downFile/downMyFile?fileName=666" class="btn btn-info">点我下载一个奇怪的文件咯</a>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-danger" type="submit">点我跳主页</button>
+        </div>
+    </form>
+</body>
+</html>
