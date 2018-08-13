@@ -22,7 +22,7 @@ public class UserAction {
     public Map addUser(@RequestBody  User user){
         Map resultMap=new HashMap();
         userService.addUser(user);
-        System.out.println(6666);
+        System.out.println(66666666);
         resultMap.put("user",user);
         resultMap.put("flag",true);
         return  resultMap;
