@@ -12,7 +12,7 @@ public class JsonAction {
     public Home getHome(@RequestBody String json){
         System.out.println(json    );
         Home myHome=new Home();
-        myHome.setHomeName("我最爱的家");
+        myHome.setHomeName("我最爱的家222");
         myHome.setHomeAge(1);
         return  myHome;
     }
