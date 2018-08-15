@@ -20,7 +20,7 @@ public class AppAuthenticationSuccessHandler extends SimpleUrlAuthenticationSucc
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
     @Override
     protected void handle(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        System.out.println("开始根据权限判断将要跳转的页面...............");
+        System.out.println("开始根据权限判断将要跳转的页面................");
         String url=determineTargetUrl(authentication);
         System.out.println(url);
         redirectStrategy.sendRedirect(request,response,url);
