@@ -32,6 +32,7 @@ public class AppAuthenticationSuccessHandler extends SimpleUrlAuthenticationSucc
         for(GrantedAuthority grantedAuthority:grantedAuthorities){
             roles.add(grantedAuthority.getAuthority());
         }
+        //这里返回路径重定向,同样返回的是controller请求路径,并不是指静态文件的路径
         if(roles.contains("ROLE_ADMIN")){
             return  "/admin";
         }else if(roles.contains("ROLE_DBA")){

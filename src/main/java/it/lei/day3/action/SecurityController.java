@@ -5,6 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -38,6 +39,7 @@ public class SecurityController {
         System.out.println("admin");
         modelAndView.addObject("user",getUserName());
         modelAndView.addObject("roles",getAuthority());
+        System.out.println(getUserName());
         return "admin";
     }
     @RequestMapping("/dba")
@@ -45,7 +47,17 @@ public class SecurityController {
         System.out.println("dba");
         modelAndView.addObject("user",getUserName());
         modelAndView.addObject("roles",getAuthority());
+        System.out.println(getUserName());
         return "dba";
+    }
+    @RequestMapping("/home")
+    public String home(Model model){
+        //这里用modelAndView必须要给视图,不然前台无法获取model里的值
+        System.out.println("home");
+        model.addAttribute("user",getUserName());
+        model.addAttribute("role",getAuthority());
+        System.out.println(getUserName());
+        return "home";
     }
     @RequestMapping("/accessDenied")
     public String accessDenied(ModelAndView modelAndView){
@@ -61,7 +73,7 @@ public class SecurityController {
         if(authentication!=null){
             new SecurityContextLogoutHandler().logout(request,response,authentication);
         }
-        return "redirect:login?logout=1";
+        return "redirect:login";
     }
     public String getUserName(){
         String userName= SecurityContextHolder.getContext().getAuthentication().getName();

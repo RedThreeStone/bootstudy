@@ -10,9 +10,9 @@
 <body>
 <div class="form-group">
     <div class="btn btn-danger"  id="homeButton">获取我的家</div>
-    <h3>欢迎[<font color="red"><span th:text="${user}">用户名</span></font>]访问本页面,
-        您的权限是[<font color="aqua"><span th:text="${role}">权限</span></font>]
-    </h3>
+    <button class="btn-default btn" th:text="${user}">
+    </button>
+    <a href="/dba">去DBA页面</a>
 </div>
 </body>
 <script>

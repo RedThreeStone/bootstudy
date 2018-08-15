@@ -45,6 +45,11 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
     </dependency>
+    <!--security模块-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
     <!--springAop-->
     <dependency>
       <groupId>org.springframework.boot</groupId>

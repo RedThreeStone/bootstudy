@@ -13,6 +13,11 @@
     <h3>
         这里是admin页面
     </h3>
+    <h3>欢迎[<font color="red"><span th:text="${user}">用户名</span></font>]访问本页面,
+        您的权限是[<font color="aqua"><span th:text="${role}">权限</span></font>]
+    </h3>
+    <a href="/logout">注销</a>
+    <a href="/dba">去dba页面</a>
 </div>
 </body>
 
