@@ -1,6 +1,9 @@
 package it.lei.day1.mapper;
 
 import it.lei.day1.entity.Permission;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface PermissionMapper {
     int deleteByPrimaryKey(Integer permissionId);
@@ -14,4 +17,6 @@ public interface PermissionMapper {
     int updateByPrimaryKeySelective(Permission record);
 
     int updateByPrimaryKey(Permission record);
+
+    List<Permission> selectPermissionsByUserName(@Param("username") String username);
 }

@@ -1,17 +1,27 @@
 package it.lei.day1.entity;
 
+import java.util.List;
+
 public class User {
     private Integer ssmUserId;
 
     private Integer userAge;
-
-    private Integer permissionId;
 
     private String username;
 
     private String password;
 
     private String userSex;
+
+    List<Permission> permissions;
+
+    public List<Permission> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(List<Permission> permissions) {
+        this.permissions = permissions;
+    }
 
     public Integer getSsmUserId() {
         return ssmUserId;
@@ -27,14 +37,6 @@ public class User {
 
     public void setUserAge(Integer userAge) {
         this.userAge = userAge;
-    }
-
-    public Integer getPermissionId() {
-        return permissionId;
-    }
-
-    public void setPermissionId(Integer permissionId) {
-        this.permissionId = permissionId;
     }
 
     public String getUsername() {

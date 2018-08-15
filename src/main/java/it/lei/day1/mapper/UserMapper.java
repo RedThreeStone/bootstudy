@@ -1,6 +1,7 @@
 package it.lei.day1.mapper;
 
 import it.lei.day1.entity.User;
+import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
     int deleteByPrimaryKey(Integer ssmUserId);
@@ -14,4 +15,7 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    User selectUserByUsername(@Param("username") String username);
+
 }

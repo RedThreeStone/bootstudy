@@ -2,6 +2,7 @@ package it.lei;
 
 import org.junit.Test;
 import org.springframework.http.MediaType;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -18,5 +19,11 @@ public class UserActionTest extends BaseTest{
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.user.username").value("刘明"))
                 .andDo(MockMvcResultHandlers.print());
+    }
+    @Test
+    public  void CreatePassword(){
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        String encode = bCryptPasswordEncoder.encode("admin");
+        System.out.println(encode);
     }
 }

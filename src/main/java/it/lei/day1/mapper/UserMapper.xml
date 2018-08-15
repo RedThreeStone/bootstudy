@@ -4,13 +4,12 @@
   <resultMap id="BaseResultMap" type="it.lei.day1.entity.User">
     <id column="ssm_user_id" jdbcType="INTEGER" property="ssmUserId" />
     <result column="user_age" jdbcType="INTEGER" property="userAge" />
-    <result column="permission_id" jdbcType="INTEGER" property="permissionId" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="user_sex" jdbcType="VARCHAR" property="userSex" />
   </resultMap>
   <sql id="Base_Column_List">
-    ssm_user_id, user_age, permission_id, username, password, user_sex
+    ssm_user_id, user_age, username, password, user_sex
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -18,17 +17,18 @@
     from users
     where ssm_user_id = #{ssmUserId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectUserByUsername" resultType="it.lei.day1.entity.User" parameterType="string">
+      select  * from users where username = #{username}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from users
     where ssm_user_id = #{ssmUserId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="it.lei.day1.entity.User">
-    insert into users (ssm_user_id, user_age, permission_id, 
-      username, password, user_sex
-      )
-    values (#{ssmUserId,jdbcType=INTEGER}, #{userAge,jdbcType=INTEGER}, #{permissionId,jdbcType=INTEGER}, 
-      #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{userSex,jdbcType=VARCHAR}
-      )
+    insert into users (ssm_user_id, user_age, username, 
+      password, user_sex)
+    values (#{ssmUserId,jdbcType=INTEGER}, #{userAge,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{userSex,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="it.lei.day1.entity.User">
     insert into users
@@ -38,9 +38,6 @@
       </if>
       <if test="userAge != null">
         user_age,
-      </if>
-      <if test="permissionId != null">
-        permission_id,
       </if>
       <if test="username != null">
         username,
@@ -59,9 +56,6 @@
       <if test="userAge != null">
         #{userAge,jdbcType=INTEGER},
       </if>
-      <if test="permissionId != null">
-        #{permissionId,jdbcType=INTEGER},
-      </if>
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
       </if>
@@ -79,9 +73,6 @@
       <if test="userAge != null">
         user_age = #{userAge,jdbcType=INTEGER},
       </if>
-      <if test="permissionId != null">
-        permission_id = #{permissionId,jdbcType=INTEGER},
-      </if>
       <if test="username != null">
         username = #{username,jdbcType=VARCHAR},
       </if>
@@ -97,7 +88,6 @@
   <update id="updateByPrimaryKey" parameterType="it.lei.day1.entity.User">
     update users
     set user_age = #{userAge,jdbcType=INTEGER},
-      permission_id = #{permissionId,jdbcType=INTEGER},
       username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       user_sex = #{userSex,jdbcType=VARCHAR}

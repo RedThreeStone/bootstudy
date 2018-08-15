@@ -9,6 +9,8 @@ public class Permission {
 
     private String permissionInfo;
 
+    private Integer ssmUserId;
+
     public Integer getPermissionId() {
         return permissionId;
     }
@@ -39,5 +41,13 @@ public class Permission {
 
     public void setPermissionInfo(String permissionInfo) {
         this.permissionInfo = permissionInfo == null ? null : permissionInfo.trim();
+    }
+
+    public Integer getSsmUserId() {
+        return ssmUserId;
+    }
+
+    public void setSsmUserId(Integer ssmUserId) {
+        this.ssmUserId = ssmUserId;
     }
 }
