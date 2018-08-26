@@ -23,7 +23,7 @@ public class AppSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        System.out.println("开始配置权限...............");
+        System.out.println("开始配置权限...............3");
         //过滤静态登录页面和静态资源,这里的/路径都是指的是controller请求路径并不是指静态页面路径
         http.authorizeRequests()
                 .antMatchers("/login","/js/**").permitAll()

@@ -24,10 +24,15 @@ public class SecurityController {
 
         return "index";
     }
-    @RequestMapping("/login")
+    /*@RequestMapping("/login")
     public String login(ModelAndView modelAndView){
         System.out.println("login");
         return "login";
+    }*/
+    @RequestMapping("/ipLogin")
+    public String ipLogin(ModelAndView modelAndView){
+        System.out.println("ipLogin");
+        return "ipLogin";
     }
     @RequestMapping("/myError")
     public String myError(ModelAndView modelAndView){
@@ -77,10 +82,6 @@ public class SecurityController {
     }
     public String getUserName(){
         String userName= SecurityContextHolder.getContext().getAuthentication().getName();
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(principal.toString());
-        Object details = SecurityContextHolder.getContext().getAuthentication().getDetails();
-        System.out.println(details);
         return  userName;
     }
     public String getAuthority(){
