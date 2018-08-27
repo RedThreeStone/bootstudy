@@ -3,7 +3,6 @@ package it.lei.day5.conponent;
 import it.lei.day3.component.AppAuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,7 +11,6 @@ import org.springframework.security.web.authentication.LoginUrlAuthenticationEnt
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-@Configuration
 public class AppSecurityConfiger extends WebSecurityConfigurerAdapter {
     @Autowired
     private  IpAuthenticationProvider ipAuthenticationProvider;
@@ -24,6 +22,12 @@ public class AppSecurityConfiger extends WebSecurityConfigurerAdapter {
     public  IpAuthenticationProvider ipAuthenticationProvider(){
         return  new IpAuthenticationProvider();
     }
+
+    /**
+     * 这里会覆盖configure中的SuccessHandler和异常的配置
+     * @param authenticationManager
+     * @return
+     */
     IpAuthenticationProcessingFilter ipAuthenticationProcessingFilter(AuthenticationManager authenticationManager){
         IpAuthenticationProcessingFilter ipAuthenticationProcessingFilter = new IpAuthenticationProcessingFilter();
         //添加认证管理器
@@ -58,12 +62,13 @@ public class AppSecurityConfiger extends WebSecurityConfigurerAdapter {
                 .and().csrf().disable()
                 .formLogin()
                 .loginPage("/ipLogin")
-              //  .successHandler(appAuthenticationSuccessHandler)
-              //  .failureForwardUrl("/myError")
+               //.successHandler(appAuthenticationSuccessHandler)
+               .failureForwardUrl("/myError")
                 .and()
                 .logout().permitAll()
                 .and()
                 .exceptionHandling().accessDeniedPage("/accessDenied");
+        //这里的得注意插入过滤器的位置
         http.addFilterBefore(ipAuthenticationProcessingFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class);
     }
 }

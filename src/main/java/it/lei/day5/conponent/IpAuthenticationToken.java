@@ -6,7 +6,9 @@ import org.springframework.security.core.GrantedAuthority;
 import java.util.Collection;
 
 public class IpAuthenticationToken extends AbstractAuthenticationToken {
-    //对比UsernamePasswordAuthenticationToken 中的账号principal 密码credentials
+    /**
+     *  对比UsernamePasswordAuthenticationToken 中的账号principal 密码credentials
+     */
     private  String ip;
 
     public String getIp() {

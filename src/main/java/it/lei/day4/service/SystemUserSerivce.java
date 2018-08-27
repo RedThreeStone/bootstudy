@@ -32,6 +32,7 @@ public class SystemUserSerivce implements UserDetailsService {
             GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(permissionCode);
             grantedAuthorities.add(grantedAuthority);
         }
+        //这里provider需要的是springSecurity的user对象
         return new org.springframework.security.core.userdetails.User(s,myUser.getPassword(),grantedAuthorities);
     }
 }

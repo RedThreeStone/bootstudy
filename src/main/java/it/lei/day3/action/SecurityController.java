@@ -24,11 +24,11 @@ public class SecurityController {
 
         return "index";
     }
-    /*@RequestMapping("/login")
+    @RequestMapping("/login")
     public String login(ModelAndView modelAndView){
         System.out.println("login");
         return "login";
-    }*/
+    }
     @RequestMapping("/ipLogin")
     public String ipLogin(ModelAndView modelAndView){
         System.out.println("ipLogin");
@@ -81,10 +81,12 @@ public class SecurityController {
         return "redirect:login";
     }
     public String getUserName(){
+        //通过获取securityContextHolder获取保存了用户信息的authentication实例对象
         String userName= SecurityContextHolder.getContext().getAuthentication().getName();
         return  userName;
     }
     public String getAuthority(){
+        //获取权限
         Collection<? extends GrantedAuthority> grantedAuthorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
         ArrayList<String> pers = new ArrayList<>();
         for (GrantedAuthority grantedAuthority:grantedAuthorities){

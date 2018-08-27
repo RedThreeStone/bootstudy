@@ -14,6 +14,16 @@ public class IpAuthenticationProcessingFilter extends AbstractAuthenticationProc
      IpAuthenticationProcessingFilter(){
         super(new AntPathRequestMatcher("/ipVerify"));
     }
+
+    /**
+     *  在AbstractAuthenticationProcessingFilter的DoFilter方法中被调用
+     * @param request
+     * @param response
+     * @return
+     * @throws AuthenticationException
+     * @throws IOException
+     * @throws ServletException
+     */
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
          String hostIp=request.getRemoteHost();
