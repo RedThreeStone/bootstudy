@@ -23,7 +23,7 @@ public class UserActionTest extends BaseTest{
     @Test
     public  void CreatePassword(){
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        String encode = bCryptPasswordEncoder.encode("admin");
+        String encode = bCryptPasswordEncoder.encode("123456");
         System.out.println(encode);
     }
 }
