@@ -32,6 +32,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
+        System.out.println(11);
         return super.authenticationManagerBean();
     }
 }
