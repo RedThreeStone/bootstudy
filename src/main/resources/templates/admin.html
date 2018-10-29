@@ -20,5 +20,28 @@
     <a href="/dba">去dba页面</a>
 </div>
 </body>
+<script type="text/javascript">
+    var a={
+        "from":0,
+        "size":5,
+        "query":{
+            "bool":{
+                "must":[{
+                        "match":{
+                            "age":"18"
+                        }
+                    },{
+                    "match":{
+                        "age":"18  19"
+                    }
+                },{
+                    "term":{
+                        "name":"黄"
+                    }
+                }]
 
+            }
+        }
+    }
+</script>
 </html>

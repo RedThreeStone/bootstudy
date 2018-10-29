@@ -13,6 +13,7 @@ public class IpAuthenticationProvider implements AuthenticationProvider {
     final static Map<String , SimpleGrantedAuthority> ipAuthorityMap=new ConcurrentHashMap<>();
     //维护一个权限Map
     static {
+        ipAuthorityMap.put("0:0:0:0:0:0:0:1",new SimpleGrantedAuthority("ROLE_ADMIN"));
         ipAuthorityMap.put("127.0.0.1",new SimpleGrantedAuthority("ROLE_ADMIN"));
         ipAuthorityMap.put("10.236.69.103",new SimpleGrantedAuthority("ROLE_USER"));
         ipAuthorityMap.put("127.0.0.5",new SimpleGrantedAuthority("ROLE_DBA"));

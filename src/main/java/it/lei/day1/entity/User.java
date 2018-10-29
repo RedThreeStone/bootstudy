@@ -23,6 +23,17 @@ public class User {
         this.permissions = permissions;
     }
 
+    public User() {
+    }
+
+    public User(Integer ssmUserId, Integer userAge, String username, String password, String userSex) {
+        this.ssmUserId = ssmUserId;
+        this.userAge = userAge;
+        this.username = username;
+        this.password = password;
+        this.userSex = userSex;
+    }
+
     public Integer getSsmUserId() {
         return ssmUserId;
     }
@@ -61,5 +72,17 @@ public class User {
 
     public void setUserSex(String userSex) {
         this.userSex = userSex == null ? null : userSex.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "ssmUserId=" + ssmUserId +
+                ", userAge=" + userAge +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", userSex='" + userSex + '\'' +
+                ", permissions=" + permissions +
+                '}';
     }
 }
